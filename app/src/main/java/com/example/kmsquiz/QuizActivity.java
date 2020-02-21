@@ -10,7 +10,6 @@ public class QuizActivity extends AppCompatActivity {
     @Override
     public void onCreate(@Nullable Bundle savedInstanceState, @Nullable PersistableBundle persistentState) {
         super.onCreate(savedInstanceState, persistentState);
-        setContentView(R.layout.activity_starting_screen);
-
+        setContentView(R.layout.activity_quiz);
     }
 }
