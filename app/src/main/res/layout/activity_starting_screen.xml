@@ -6,7 +6,8 @@
     android:layout_height="match_parent"
     android:background="@color/colorBackground"
     android:padding="16dp"
-    tools:context="com.example.">
+    tools:context="com.example.kmsquiz.StartingScreenActivity">
+
 
     <TextView
         android:layout_width="wrap_content"
@@ -14,6 +15,24 @@
         android:layout_centerHorizontal="true"
         android:layout_marginTop="30dp"
         android:text="How To Sell Drugs"
+        android:textColor="@android:color/black"
+        android:textSize="35sp" />
+
+
+    <ProgressBar
+        android:id="@+id/overall_progress"
+        style="@style/Widget.AppCompat.ProgressBar.Horizontal"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:layout_above="@+id/text_view_highscore"
+        android:layout_centerInParent="true"
+        android:layout_marginLeft="100dp"
+        android:layout_marginBottom="60dp"
+        android:background="#e5e5e5"
+        android:indeterminate="false"
+        android:max="100"
+        android:progress="50"
+        android:text="Overall Progress"
         android:textColor="@android:color/black"
         android:textSize="35sp" />
 

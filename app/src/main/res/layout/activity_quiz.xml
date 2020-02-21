@@ -6,7 +6,8 @@
     android:layout_height="match_parent"
     android:background="@color/colorBackground"
     android:padding="16dp"
-    tools:context="com.example.">
+    tools:context="com.example.kmsquiz.QuizActivity">
+
 
     <TextView
         android:id="@+id/text_view_score"
