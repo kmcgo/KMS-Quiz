@@ -5,11 +5,29 @@ import android.os.Bundle;
 import android.os.PersistableBundle;
 import android.view.View;
 import android.widget.Button;
+import android.widget.Spinner;
+import android.widget.TextView;
 
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 
 public class StartingScreenActivity extends AppCompatActivity {
+
+    private static final int REQUEST_CODE_QUIZ = 1;
+    public static final String EXTRA_CATEGORY_ID = "extraCategoryID";
+    public static final String EXTRA_CATEGORY_NAME = "extraCategoryName";
+    public static final String EXTRA_DIFFICULTY = "extraDifficulty";
+
+    public static final String SHARED_PREFS = "sharedPrefs";
+    public static final String KEY_HIGHSCORE = "keyHighscore";
+
+    private TextView textViewHighscore;
+    private Spinner spinnerCategory;
+    private Spinner spinnerDifficulty;
+
+    private int highscore;
+
+
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
