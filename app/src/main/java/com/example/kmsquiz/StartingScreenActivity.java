@@ -31,5 +31,6 @@ public class StartingScreenActivity extends AppCompatActivity {
         //Create intent object which is like an operation that will be performed, in this case the operation is used to change views
         Intent intent = new Intent(StartingScreenActivity.this, QuizActivity.class);
         startActivity(intent);
+
     }
 }

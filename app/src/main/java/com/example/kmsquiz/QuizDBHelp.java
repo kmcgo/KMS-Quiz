@@ -1,5 +1,5 @@
 package com.example.kmsquiz;
 
-public class QuizActivity {
+public class QuizDBHelp {
 
 }
