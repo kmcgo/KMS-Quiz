@@ -23,7 +23,7 @@ public class Question implements Parcelable {
     }
 
     public Question(String question, String option1, String option2, String option3,
-                    int answerNr, String difficulty, int categoryID) {
+                    int answerNr, String difficulty, int categoryID) {  //load question
         this.question = question;
         this.option1 = option1;
         this.option2 = option2;
@@ -33,7 +33,7 @@ public class Question implements Parcelable {
         this.categoryID = categoryID;
     }
 
-    protected Question(Parcel in) {
+    protected Question(Parcel in) { // load question from parcel
         id = in.readInt();
         question = in.readString();
         option1 = in.readString();
@@ -45,7 +45,7 @@ public class Question implements Parcelable {
     }
 
     @Override
-    public void writeToParcel(Parcel dest, int flags) {
+    public void writeToParcel(Parcel dest, int flags) { // save question to parcel
         dest.writeInt(id);
         dest.writeString(question);
         dest.writeString(option1);

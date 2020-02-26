@@ -1,15 +1,16 @@
 package com.example.kmsquiz;
 
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
-import android.os.PersistableBundle;
 import android.view.View;
+import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.Spinner;
 import android.widget.TextView;
-
-import androidx.annotation.Nullable;
+import java.util.List;
 import androidx.appcompat.app.AppCompatActivity;
+
 
 public class StartingScreenActivity extends AppCompatActivity {
 
@@ -33,6 +34,13 @@ public class StartingScreenActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_starting_screen);//Sets starting layout based on associated xml file
 
+        textViewHighscore = findViewById(R.id.text_view_highscore); // intit hs, diff, and category
+        spinnerCategory = findViewById(R.id.spinner_category);
+        spinnerDifficulty = findViewById(R.id.spinner_difficulty);
+
+        loadCategories(); // load values from data base
+        loadDifficultyLevels();
+        loadHighscore();
 
         Button btnStart = findViewById(R.id.button_start_quiz);//Create object for button thats bound to button on the start activity page
 
@@ -50,5 +58,66 @@ public class StartingScreenActivity extends AppCompatActivity {
         Intent intent = new Intent(StartingScreenActivity.this, QuizActivity.class);
         startActivity(intent);
 
+        Category selectedCategory = (Category) spinnerCategory.getSelectedItem();
+        int categoryID = selectedCategory.getId();
+        String categoryName = selectedCategory.getName();
+        String difficulty = spinnerDifficulty.getSelectedItem().toString();
+
+        intent.putExtra(EXTRA_CATEGORY_ID, categoryID); // save to the intent
+        intent.putExtra(EXTRA_CATEGORY_NAME, categoryName);
+        intent.putExtra(EXTRA_DIFFICULTY, difficulty);
+
+        startActivityForResult(intent, REQUEST_CODE_QUIZ);
+
+
+    }
+
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, Intent data) { //updater for hs
+        super.onActivityResult(requestCode, resultCode, data);
+
+        if (requestCode == REQUEST_CODE_QUIZ) {
+            if (resultCode == RESULT_OK) {
+                int score = data.getIntExtra(QuizActivity.EXTRA_SCORE, 0);
+                if (score > highscore) {
+                    updateHighscore(score);
+                }
+            }
+        }
+    }
+
+    private void loadCategories() {
+        QuizDBHelp dbHelper = QuizDBHelp.getInstance(this); // get the instance of quiz helper class
+        List<Category> categories = dbHelper.getAllCategories(); // get categories from db
+
+        ArrayAdapter<Category> adapterCategories = new ArrayAdapter<>(this,
+                android.R.layout.simple_spinner_item, categories);
+        adapterCategories.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+        spinnerCategory.setAdapter(adapterCategories); // add category to the spinner
+    }
+
+    private void loadDifficultyLevels() {
+        String[] difficultyLevels = Question.getAllDifficultyLevels(); // get list of diffs from quiz class
+
+        ArrayAdapter<String> adapterDifficulty = new ArrayAdapter<String>(this,
+                android.R.layout.simple_spinner_item, difficultyLevels);
+        adapterDifficulty.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+        spinnerDifficulty.setAdapter(adapterDifficulty); // add diffs to the spinner
+    }
+
+    private void loadHighscore() {
+        SharedPreferences prefs = getSharedPreferences(SHARED_PREFS, MODE_PRIVATE);
+        highscore = prefs.getInt(KEY_HIGHSCORE, 0);
+        textViewHighscore.setText("Highscore: " + highscore); // display hs
+    }
+
+    private void updateHighscore(int highscoreNew) {
+        highscore = highscoreNew;                                                       // update hs variable
+        textViewHighscore.setText("Highscore: " + highscore);                           // display hs
+
+        SharedPreferences prefs = getSharedPreferences(SHARED_PREFS, MODE_PRIVATE);
+        SharedPreferences.Editor editor = prefs.edit();
+        editor.putInt(KEY_HIGHSCORE, highscore);
+        editor.apply();
     }
 }
