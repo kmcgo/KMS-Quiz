@@ -6,6 +6,8 @@ import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
 
+import com.example.kmsquiz.data.Category;
+
 import java.util.ArrayList;
 import java.util.List;
 
@@ -41,6 +43,7 @@ public class QuizDBHelp extends SQLiteOpenHelper {
                 QuizContract.CategoriesTable.TABLE_NAME + "( " +
                 QuizContract.CategoriesTable._ID + " INTEGER PRIMARY KEY AUTOINCREMENT, " +
                 QuizContract.CategoriesTable.COLUMN_NAME + " TEXT " +
+
                 ")";
 
         final String SQL_CREATE_QUESTIONS_TABLE = "CREATE TABLE " +
