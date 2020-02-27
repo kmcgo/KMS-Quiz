@@ -7,7 +7,7 @@ import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
 
 import java.util.ArrayList;
-import java.util.List;
+
 
 public class QuizDBHelp extends SQLiteOpenHelper {
 
@@ -100,7 +100,7 @@ public class QuizDBHelp extends SQLiteOpenHelper {
                 "5mg/kg admin as an IV infusion over 10 minutes, followed by IPI 1mg/kg admin as an IV infusion 5 weeks for 3 doses",
                 "3mg/kg admin as an IV infusion over 60 minutes, followed by IPI 1mg/kg admin as an IV infusion 8 weeks for 8 doses",
                 1,
-                Question.DIFFICULTY_HARD, Category.DRUG);
+                Question.DIFFICULTY_HARD, 1);
         addQuestion(q1);
 
         Question q2 = new Question("What was the hazard ratio for PFS in favor of " +
@@ -139,8 +139,8 @@ public class QuizDBHelp extends SQLiteOpenHelper {
     }
 
 
-    public List<Category> getAllCategories() {
-        List<Category> categoryList = new ArrayList<>();
+    public ArrayList<Category> getAllCategories() {
+        ArrayList<Category> categoryList = new ArrayList<>();
         db = getReadableDatabase();
         Cursor c = db.rawQuery("SELECT * FROM " + QuizContract.CategoriesTable.TABLE_NAME, null);
 

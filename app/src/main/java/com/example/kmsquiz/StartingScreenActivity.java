@@ -8,7 +8,7 @@ import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.Spinner;
 import android.widget.TextView;
-import java.util.List;
+import java.util.ArrayList;
 import androidx.appcompat.app.AppCompatActivity;
 
 
@@ -88,7 +88,7 @@ public class StartingScreenActivity extends AppCompatActivity {
 
     private void loadCategories() {
         QuizDBHelp dbHelper = QuizDBHelp.getInstance(this); // get the instance of quiz helper class
-        List<Category> categories = dbHelper.getAllCategories(); // get categories from db
+        ArrayList<Category> categories = dbHelper.getAllCategories(); // get categories from db
 
         ArrayAdapter<Category> adapterCategories = new ArrayAdapter<>(this,
                 android.R.layout.simple_spinner_item, categories);
@@ -99,7 +99,7 @@ public class StartingScreenActivity extends AppCompatActivity {
     private void loadDifficultyLevels() {
         String[] difficultyLevels = Question.getAllDifficultyLevels(); // get list of diffs from quiz class
 
-        ArrayAdapter<String> adapterDifficulty = new ArrayAdapter<String>(this,
+        ArrayAdapter<String> adapterDifficulty = new ArrayAdapter<>(this,
                 android.R.layout.simple_spinner_item, difficultyLevels);
         adapterDifficulty.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
         spinnerDifficulty.setAdapter(adapterDifficulty); // add diffs to the spinner
