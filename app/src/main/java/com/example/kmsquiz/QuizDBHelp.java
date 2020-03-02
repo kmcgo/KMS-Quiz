@@ -181,8 +181,7 @@ public class QuizDBHelp extends SQLiteOpenHelper {
         ArrayList<Question> questionList = new ArrayList<>();
         db = getReadableDatabase();
 
-        String selection = QuizContract.QuestionsTable.COLUMN_CATEGORY_ID + " = ? " +
-                " AND " + " = ? ";
+        String selection = QuizContract.QuestionsTable.COLUMN_CATEGORY_ID + " = ? ";
         String[] selectionArgs = new String[]{String.valueOf(categoryID)};
 
         Cursor c = db.query(

@@ -90,6 +90,8 @@ public class QuizActivity extends AppCompatActivity {
         //if first instance init quiz
         if (savedInstanceState == null) {
             QuizDBHelp dbHelper = new QuizDBHelp(this);
+
+            questionList = dbHelper.getQuestions(categoryID);
             questionCountTotal = questionList.size();
             Collections.shuffle(questionList);
 
