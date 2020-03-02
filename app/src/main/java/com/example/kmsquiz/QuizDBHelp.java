@@ -51,7 +51,6 @@ public class QuizDBHelp extends SQLiteOpenHelper {
                 QuizContract.QuestionsTable.COLUMN_OPTION2 + " TEXT, " +
                 QuizContract.QuestionsTable.COLUMN_OPTION3 + " TEXT, " +
                 QuizContract.QuestionsTable.COLUMN_ANSWER_NR + " INTEGER, " +
-                QuizContract.QuestionsTable.COLUMN_DIFFICULTY + " TEXT, " +
                 QuizContract.QuestionsTable.COLUMN_CATEGORY_ID + " INTEGER, " +
                 "FOREIGN KEY(" + QuizContract.QuestionsTable.COLUMN_CATEGORY_ID + ") REFERENCES " +
                 QuizContract.CategoriesTable.TABLE_NAME + "(" + QuizContract.CategoriesTable._ID + ")" + "ON DELETE CASCADE" +
@@ -99,30 +98,29 @@ public class QuizDBHelp extends SQLiteOpenHelper {
                 "3mg/kg admin as an IV infusion over 30 minutes, followed by IPI 1mg/kg admin as an IV infusion 4 weeks for 4 doses",
                 "5mg/kg admin as an IV infusion over 10 minutes, followed by IPI 1mg/kg admin as an IV infusion 5 weeks for 3 doses",
                 "3mg/kg admin as an IV infusion over 60 minutes, followed by IPI 1mg/kg admin as an IV infusion 8 weeks for 8 doses",
-                1,
-                Question.DIFFICULTY_HARD, 1);
+                1, 1);
         addQuestion(q1);
 
         Question q2 = new Question("What was the hazard ratio for PFS in favor of " +
                 "Opdivo plus IPI compared with sunitinib in the Checkmate 214 immediately?",
-                "0.98", "0.28", "0.82", 3,
-                Question.DIFFICULTY_EASY, Category.DRUG);
+                "0.98", "0.28", "0.82", 3, 2);
         addQuestion(q2);
         Question q3 = new Question("Patients were excluded from Checkmate 025 if they had which of the following?",
                 "No previous health issues", "Prior Treatment with an mTOR inhibitor", "T-Rex arms", 2,
-                Question.DIFFICULTY_EASY, Category.SALES);
+                2);
         addQuestion(q3);
         Question q4 = new Question("What were the major efficacy outcome measures in Checkmate 214?",
-                "Confirmed ORR, PFS, OS", "Unconfirmed ORR, FFS, and OS", "FFS and SOL", 1,
-                Question.DIFFICULTY_MEDIUM, Category.SALES);
+                "Confirmed ORR, PFS, OS", "Unconfirmed ORR, FFS, and OS", "FFS and S" +
+                "OL", 1,
+                1);
         addQuestion(q4);
         Question q5 = new Question("Non existing, Easy: A is correct",
                 "A", "B", "C", 1,
-                Question.DIFFICULTY_EASY, 4);
+                4);
         addQuestion(q5);
         Question q6 = new Question("Non existing, Medium: B is correct",
                 "A", "B", "C", 2,
-                Question.DIFFICULTY_MEDIUM, 5);
+                5);
         addQuestion(q6);
     }
 
@@ -133,7 +131,6 @@ public class QuizDBHelp extends SQLiteOpenHelper {
         cv.put(QuizContract.QuestionsTable.COLUMN_OPTION2, question.getOption2());
         cv.put(QuizContract.QuestionsTable.COLUMN_OPTION3, question.getOption3());
         cv.put(QuizContract.QuestionsTable.COLUMN_ANSWER_NR, question.getAnswerNr());
-        cv.put(QuizContract.QuestionsTable.COLUMN_DIFFICULTY, question.getDifficulty());
         cv.put(QuizContract.QuestionsTable.COLUMN_CATEGORY_ID, question.getCategoryID());
         db.insert(QuizContract.QuestionsTable.TABLE_NAME, null, cv);
     }
@@ -171,7 +168,6 @@ public class QuizDBHelp extends SQLiteOpenHelper {
                 question.setOption2(c.getString(c.getColumnIndex(QuizContract.QuestionsTable.COLUMN_OPTION2)));
                 question.setOption3(c.getString(c.getColumnIndex(QuizContract.QuestionsTable.COLUMN_OPTION3)));
                 question.setAnswerNr(c.getInt(c.getColumnIndex(QuizContract.QuestionsTable.COLUMN_ANSWER_NR)));
-                question.setDifficulty(c.getString(c.getColumnIndex(QuizContract.QuestionsTable.COLUMN_DIFFICULTY)));
                 question.setCategoryID(c.getInt(c.getColumnIndex(QuizContract.QuestionsTable.COLUMN_CATEGORY_ID)));
                 questionList.add(question);
             } while (c.moveToNext());
@@ -181,13 +177,13 @@ public class QuizDBHelp extends SQLiteOpenHelper {
         return questionList;
     }
 
-    public ArrayList<Question> getQuestions(int categoryID, String difficulty) {
+    public ArrayList<Question> getQuestions(int categoryID) {
         ArrayList<Question> questionList = new ArrayList<>();
         db = getReadableDatabase();
 
         String selection = QuizContract.QuestionsTable.COLUMN_CATEGORY_ID + " = ? " +
-                " AND " + QuizContract.QuestionsTable.COLUMN_DIFFICULTY + " = ? ";
-        String[] selectionArgs = new String[]{String.valueOf(categoryID), difficulty};
+                " AND " + " = ? ";
+        String[] selectionArgs = new String[]{String.valueOf(categoryID)};
 
         Cursor c = db.query(
                 QuizContract.QuestionsTable.TABLE_NAME,
@@ -208,7 +204,6 @@ public class QuizDBHelp extends SQLiteOpenHelper {
                 question.setOption2(c.getString(c.getColumnIndex(QuizContract.QuestionsTable.COLUMN_OPTION2)));
                 question.setOption3(c.getString(c.getColumnIndex(QuizContract.QuestionsTable.COLUMN_OPTION3)));
                 question.setAnswerNr(c.getInt(c.getColumnIndex(QuizContract.QuestionsTable.COLUMN_ANSWER_NR)));
-                question.setDifficulty(c.getString(c.getColumnIndex(QuizContract.QuestionsTable.COLUMN_DIFFICULTY)));
                 question.setCategoryID(c.getInt(c.getColumnIndex(QuizContract.QuestionsTable.COLUMN_CATEGORY_ID)));
                 questionList.add(question);
             } while (c.moveToNext());
