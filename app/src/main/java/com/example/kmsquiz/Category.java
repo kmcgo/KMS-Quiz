@@ -3,6 +3,7 @@ package com.example.kmsquiz;
 public class Category {
     public static final int DRUG = 1;
     public static final int SALES = 2;
+    public static final int DOCS = 3;
     private int id;
     private String name;
 

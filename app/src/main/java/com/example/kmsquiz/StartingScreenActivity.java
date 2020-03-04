@@ -6,6 +6,7 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
+import android.widget.ProgressBar;
 import android.widget.Spinner;
 import android.widget.TextView;
 import java.util.ArrayList;
@@ -37,6 +38,7 @@ public class StartingScreenActivity extends AppCompatActivity {
 
         loadCategories(); // load values from data base
         loadHighscore();
+        loadProgress();
 
         Button btnStart = findViewById(R.id.button_start_quiz);//Create object for button thats bound to button on the start activity page
 
@@ -78,6 +80,15 @@ public class StartingScreenActivity extends AppCompatActivity {
                 }
             }
         }
+    }
+
+    private void loadProgress(){
+        QuizDBHelp dbHelper = QuizDBHelp.getInstance(this); // get the instance of quiz helper class
+        int prog = dbHelper.getprogress();
+        int numAnswer = 1;
+        ProgressBar simpleProgressBar=findViewById(R.id.overall_progress); // initiate the progress bar
+        simpleProgressBar.setMax(prog); // 100 maximum value for the progress value
+        simpleProgressBar.setProgress(numAnswer); // 50 default progress value for the progress bar
     }
 
     private void loadCategories() {

@@ -103,15 +103,15 @@ public class QuizDBHelp extends SQLiteOpenHelper {
 
         Question q2 = new Question("What was the hazard ratio for PFS in favor of " +
                 "Opdivo plus IPI compared with sunitinib in the Checkmate 214 immediately?",
-                "0.98", "0.28", "0.82", 3, 2);
+                "0.98", "0.28", "0.82", 3, Category.DRUG);
         addQuestion(q2);
         Question q3 = new Question("Patients were excluded from Checkmate 025 if they had which of the following?",
                 "No previous health issues", "Prior Treatment with an mTOR inhibitor", "T-Rex arms", 2,
-                2);
+                Category.SALES);
         addQuestion(q3);
         Question q4 = new Question("What were the major efficacy outcome measures in Checkmate 214?",
                 "Confirmed ORR, PFS, OS", "Unconfirmed ORR, FFS, and OS", "FFS and S" +
-                "OL", 1,
+                "OL", Category.DOCS,
                 1);
         addQuestion(q4);
         Question q5 = new Question("Non existing, Easy: A is correct",
@@ -152,6 +152,11 @@ public class QuizDBHelp extends SQLiteOpenHelper {
 
         c.close();
         return categoryList;
+    }
+
+    public int getprogress(){
+        ArrayList questions = getAllQuestions();
+        return questions.size();
     }
 
     public ArrayList<Question> getAllQuestions() {
