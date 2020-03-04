@@ -18,6 +18,9 @@ import java.util.Locale;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import com.example.kmsquiz.data.DB.Question;
+import com.example.kmsquiz.data.DB.QuizDBHelp;
+
 public class QuizActivity extends AppCompatActivity {
 
 

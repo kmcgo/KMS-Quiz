@@ -1,12 +1,12 @@
-package com.example.kmsquiz.data;
+package com.example.kmsquiz.data.DB;
 
 import android.content.ContentValues;
 import android.content.Context;
 import android.database.Cursor;
 
-import com.example.kmsquiz.Answer;
-import com.example.kmsquiz.QuestionDB;
 import com.example.kmsquiz.data.QuizFormat.*;
+import com.example.kmsquiz.data.User;
+
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
 
@@ -88,7 +88,6 @@ public class DateBaseHelp extends SQLiteOpenHelper {
     private void addQuestion(QuestionDB ques)
     {
         ContentValues cv = new ContentValues();
-        cv.put(QuestionTable.ColumnDiff, ques.getDiff());
         cv.put(QuestionTable.ColumnNmb, ques.getNum());
         cv.put(QuestionTable.ColumnTxt, ques.getTxt());
         cv.put(QuestionTable.ColumnPt, ques.getPts());
@@ -113,7 +112,6 @@ public class DateBaseHelp extends SQLiteOpenHelper {
             while (c.moveToNext())
             {
                 QuestionDB q = new QuestionDB();
-                q.setDiff(c.getString(c.getColumnIndex(QuestionTable.ColumnDiff)));
                 q.setNum(c.getInt(c.getColumnIndex(QuestionTable.ColumnNmb)));
                 q.setPts(c.getInt(c.getColumnIndex(QuestionTable.ColumnPt)));
                 q.setTxt(c.getString(c.getColumnIndex(QuestionTable.ColumnTxt)));

@@ -11,6 +11,9 @@ import android.widget.TextView;
 import java.util.ArrayList;
 import androidx.appcompat.app.AppCompatActivity;
 
+import com.example.kmsquiz.data.DB.Category;
+import com.example.kmsquiz.data.DB.QuizDBHelp;
+
 
 public class StartingScreenActivity extends AppCompatActivity {
 

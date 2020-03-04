@@ -1,10 +1,18 @@
-package com.example.kmsquiz;
+package com.example.kmsquiz.data.DB;
 
 public class Answer {
     private String Txt;
     private int quesNum;
+    private int AnsId;
 
 
+    public int getAnsId() {
+        return AnsId;
+    }
+
+    public void setAnsId(int ansId) {
+        AnsId = ansId;
+    }
 
     public String getTxt() {
         return Txt;
