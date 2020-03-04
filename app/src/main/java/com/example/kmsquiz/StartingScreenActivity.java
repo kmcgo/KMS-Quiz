@@ -8,7 +8,7 @@ import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.Spinner;
 import android.widget.TextView;
-import java.util.List;
+import java.util.ArrayList;
 import androidx.appcompat.app.AppCompatActivity;
 
 
@@ -17,14 +17,12 @@ public class StartingScreenActivity extends AppCompatActivity {
     private static final int REQUEST_CODE_QUIZ = 1;
     public static final String EXTRA_CATEGORY_ID = "extraCategoryID";
     public static final String EXTRA_CATEGORY_NAME = "extraCategoryName";
-    public static final String EXTRA_DIFFICULTY = "extraDifficulty";
 
     public static final String SHARED_PREFS = "sharedPrefs";
     public static final String KEY_HIGHSCORE = "keyHighscore";
 
     private TextView textViewHighscore;
     private Spinner spinnerCategory;
-    private Spinner spinnerDifficulty;
 
     private int highscore;
 
@@ -34,12 +32,10 @@ public class StartingScreenActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_starting_screen);//Sets starting layout based on associated xml file
 
-        textViewHighscore = findViewById(R.id.text_view_highscore); // intit hs, diff, and category
+        textViewHighscore = findViewById(R.id.text_view_highscore); // intit hs, and category
         spinnerCategory = findViewById(R.id.spinner_category);
-        spinnerDifficulty = findViewById(R.id.spinner_difficulty);
 
         loadCategories(); // load values from data base
-        loadDifficultyLevels();
         loadHighscore();
 
         Button btnStart = findViewById(R.id.button_start_quiz);//Create object for button thats bound to button on the start activity page
@@ -61,11 +57,9 @@ public class StartingScreenActivity extends AppCompatActivity {
         Category selectedCategory = (Category) spinnerCategory.getSelectedItem();
         int categoryID = selectedCategory.getId();
         String categoryName = selectedCategory.getName();
-        String difficulty = spinnerDifficulty.getSelectedItem().toString();
 
         intent.putExtra(EXTRA_CATEGORY_ID, categoryID); // save to the intent
         intent.putExtra(EXTRA_CATEGORY_NAME, categoryName);
-        intent.putExtra(EXTRA_DIFFICULTY, difficulty);
 
         startActivityForResult(intent, REQUEST_CODE_QUIZ);
 
@@ -88,7 +82,7 @@ public class StartingScreenActivity extends AppCompatActivity {
 
     private void loadCategories() {
         QuizDBHelp dbHelper = QuizDBHelp.getInstance(this); // get the instance of quiz helper class
-        List<Category> categories = dbHelper.getAllCategories(); // get categories from db
+        ArrayList<Category> categories = dbHelper.getAllCategories(); // get categories from db
 
         ArrayAdapter<Category> adapterCategories = new ArrayAdapter<>(this,
                 android.R.layout.simple_spinner_item, categories);
@@ -96,14 +90,6 @@ public class StartingScreenActivity extends AppCompatActivity {
         spinnerCategory.setAdapter(adapterCategories); // add category to the spinner
     }
 
-    private void loadDifficultyLevels() {
-        String[] difficultyLevels = Question.getAllDifficultyLevels(); // get list of diffs from quiz class
-
-        ArrayAdapter<String> adapterDifficulty = new ArrayAdapter<String>(this,
-                android.R.layout.simple_spinner_item, difficultyLevels);
-        adapterDifficulty.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
-        spinnerDifficulty.setAdapter(adapterDifficulty); // add diffs to the spinner
-    }
 
     private void loadHighscore() {
         SharedPreferences prefs = getSharedPreferences(SHARED_PREFS, MODE_PRIVATE);

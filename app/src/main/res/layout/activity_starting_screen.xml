@@ -14,7 +14,7 @@
         android:layout_height="wrap_content"
         android:layout_centerHorizontal="true"
         android:layout_marginTop="30dp"
-        android:text="How To Sell Drugs"
+        android:text="@string/how_to_sell_drugs"
         android:textColor="@android:color/black"
         android:textSize="35sp" />
 
@@ -22,6 +22,7 @@
     <ProgressBar
         android:id="@+id/overall_progress"
         style="@style/Widget.AppCompat.ProgressBar.Horizontal"
+
         android:layout_width="fill_parent"
         android:layout_height="wrap_content"
         android:layout_above="@+id/text_view_highscore"
@@ -31,7 +32,7 @@
         android:background="#e5e5e5"
         android:max="100"
         android:progress="50"
-        android:text="Overall Progress"
+        android:text="@string/overall_progress"
         android:textColor="@android:color/black"
         android:textSize="35sp" />
 
@@ -56,18 +57,14 @@
         android:id="@+id/spinner_category"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_below="@+id/spinner_difficulty"
-        android:layout_alignStart="@+id/spinner_difficulty"
+        android:layout_below="@+id/button_start_quiz"
         android:layout_centerInParent="true"
         android:layout_marginTop="32dp" />
 
+
+
     <Spinner
-        android:id="@+id/spinner_difficulty"
         android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_below="@+id/button_start_quiz"
-        android:layout_alignStart="@+id/button_start_quiz"
-        android:layout_centerInParent="true"
-        android:layout_marginTop="32dp" />
+        android:layout_height="wrap_content" />
 
 </RelativeLayout>

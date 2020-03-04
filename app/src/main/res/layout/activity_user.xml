@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/colorBackground"
+    android:padding="16dp"
+    tools:context="com.example.kmsquiz.UserActivity">
+    <TextView
+        android:id="@+id/text_overview"
+        android:text="LOREM IPSUM MOO MA MEE MAALOREM IPSUM MOO MA MEE MAA\nLOREM IPSUM MOO MA MEE MAA\"
+        android:textAlignment="center"
+        android:textColor="@android:color/black"
+        android:textSize="20sp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content" />
+    <Button
+        android:id="@+id/button_create_quiz"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="16dp"
+        android:layout_below="@id/text_overview"
+        android:freezesText="true"
+        android:text="Create Quiz" />
+
+    <Button
+        android:id="@+id/button_"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="16dp"
+        android:layout_below="@id/button_create_quiz"
+        android:freezesText="true"
+        android:text="View Results" />
+
+
+</RelativeLayout>
