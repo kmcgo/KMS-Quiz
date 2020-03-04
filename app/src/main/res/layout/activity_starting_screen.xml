@@ -22,8 +22,8 @@
     <ProgressBar
         android:id="@+id/overall_progress"
         style="@style/Widget.AppCompat.ProgressBar.Horizontal"
-        android:layout_width="170dp"
-        android:layout_height="120dp"
+        android:layout_width="fill_parent"
+        android:layout_height="30dp"
         android:layout_above="@id/overall_progress_text"
         android:layout_centerHorizontal="true"
         android:layout_marginTop="100dp"
@@ -36,12 +36,12 @@
         android:id="@+id/overall_progress_text"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_centerHorizontal="true"
         android:layout_above="@id/text_view_highscore"
-        android:layout_centerInParent="true"
         android:layout_centerVertical="true"
-        android:layout_marginBottom="22dp"
+        android:layout_marginBottom="59dp"
         android:text="Total Progress"
-        android:textColor="@android:color/black" />
+        android:textSize="10sp" />
 
     <TextView
         android:id="@+id/text_view_highscore"
