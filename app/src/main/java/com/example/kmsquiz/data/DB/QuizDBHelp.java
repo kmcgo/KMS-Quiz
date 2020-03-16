@@ -114,7 +114,7 @@ public class QuizDBHelp extends SQLiteOpenHelper {
         addQuestion(q3);
         Question q4 = new Question("What were the major efficacy outcome measures in Checkmate 214?",
                 "Confirmed ORR, PFS, OS", "Unconfirmed ORR, FFS, and OS", "FFS and S" +
-                "OL", Category.DOCS,
+                "OL", Category.DRUG,
                 1);
         addQuestion(q4);
         Question q5 = new Question("Non existing, Easy: A is correct",

@@ -23,7 +23,7 @@ public class QuizContract {
 
     }
 
-    public static class QuestionDB implements BaseColumns {
+    public static class QuestionDBTable implements BaseColumns {
         public static final String TableName = "Questions";
         public static final String ColumnQuestionId = "QuestId";
         public static final String ColumnQuizId = "QuizId";
@@ -37,7 +37,7 @@ public class QuizContract {
         public static final String ColumnTitle = "Title";
     }
 
-    public static class QtHasTable implements BaseColumns {
+    public static class QzHasTable implements BaseColumns {
         public static final String TableName = "Qthas";
         public static final String ColumnQuizId = "QuizId";
         public static final String ColumnQuestId = "QuestId";
@@ -45,7 +45,7 @@ public class QuizContract {
         public static final String ColumnTotPts = "TotPts";
     }
 
-    public static class QzHasTable implements BaseColumns {
+    public static class QtHasTable implements BaseColumns {
         public static final String TableName = "QzHas";
         public static final String ColumnQuestId = "QuestId";
         public static final String ColumnQuizID = "QuizId";
@@ -57,9 +57,10 @@ public class QuizContract {
         public static final String TableName = "Answer";
         public static final String ColumnQuizId = "QuizId";
         public static final String ColumnAnswId = "AnswId";
+        public static final String ColumnText = "Txt";
     }
 
-    public static class UserIdTable implements BaseColumns {
+    public static class UserHistTable implements BaseColumns {
         public static final String TableName = "UserHist";
         public static final String ColumnQuestId = "QuestId";
         public static final String ColumnGivenId = "GivenId";
@@ -69,14 +70,14 @@ public class QuizContract {
         public static final String ColumnUserId = "UserId";
     }
 
-    public static class UserHist implements BaseColumns {
+    public static class UserIdTable implements BaseColumns {
         public static final String TableName = "UserInfo";
         public static final String ColumnPassword = "Pass";
         public static final String ColumnUserId = "UserId";
         public static final String ColumnUserName = "Name";
     }
 
-    public static class IsAdmn implements BaseColumns {
+    public static class IsAdmnTable implements BaseColumns {
         public static final String TableName = "IsAdmin";
         public static final String ColumnUserId = "UserId";
         public static final String ColumnAdmin = "Admin";

@@ -5,8 +5,16 @@ public class QuestionDB {
     private String Txt;
     private int num;
     private int TotPts;
-    private int TotQues;
+    private int QuizId;
 
+
+    public int getQuizId() {
+        return QuizId;
+    }
+
+    public void setQuizId(int quizId) {
+        QuizId = quizId;
+    }
 
     public String getTxt() {
         return Txt;
@@ -16,27 +24,20 @@ public class QuestionDB {
         Txt = txt;
     }
 
-    public int getNum() {
+    public int getId() {
         return num;
     }
 
-    public void setNum(int num) {
+    public void setId(int num) {
         this.num = num;
     }
 
-    public int getPts() {
+    public int getTotPts() {
         return TotPts;
     }
 
-    public void setPts(int pts) {
+    public void setTotPts(int pts) {
         TotPts = pts;
     }
 
-    public int getTotQues() {
-        return TotQues;
-    }
-
-    public void setTotQues(int totQues) {
-        TotQues = totQues;
-    }
 }
