@@ -6,6 +6,8 @@ import android.graphics.Color;
 import android.os.Bundle;
 import android.os.CountDownTimer;
 import android.view.View;
+import android.view.animation.Animation;
+import android.view.animation.AnimationUtils;
 import android.widget.Button;
 import android.widget.RadioButton;
 import android.widget.RadioGroup;
@@ -15,6 +17,7 @@ import android.widget.Toast;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.Locale;
+import java.util.Random;
 
 import androidx.appcompat.app.AppCompatActivity;
 
@@ -173,10 +176,47 @@ public class QuizActivity extends AppCompatActivity {
         }.start();
     }
 
+    private int ranSelect;
     private void updateCountDownText() { //call for updating the countdown timer
         int minutes = (int) (timeLeftInMillis / 1000) / 60; //minutes hand
         int seconds = (int) (timeLeftInMillis / 1000) % 60; //seconds hand
+        Random rand = new Random();
+        Animation animFadeOut = AnimationUtils.loadAnimation(getApplicationContext(),R.anim.fade_out);
 
+        if(seconds == 23){
+            switch (ranSelect) {
+                case 1:
+                    rb1.setAlpha(0);
+                    break;
+                case 2:
+                    rb2.setAlpha(0);
+                    break;
+                case 3:
+                    rb3.setAlpha(0);
+                    break;
+            }
+        }
+
+        if(seconds == 25) {
+            ranSelect = rand.nextInt(3) + 1;;
+            if(ranSelect == currentQuestion.getAnswerNr()){
+                while(ranSelect == currentQuestion.getAnswerNr() ) {
+                    ranSelect = rand.nextInt(3) + 1;
+                }
+            }
+                switch (ranSelect) {
+                    case 1:
+                        rb1.startAnimation(animFadeOut);
+                        break;
+                    case 2:
+                        rb2.startAnimation(animFadeOut);
+                        break;
+                    case 3:
+                        rb3.startAnimation(animFadeOut);
+
+                        break;
+            }
+        }
         String timeFormatted = String.format(Locale.getDefault(), "%02d:%02d", minutes, seconds); //set format
 
         textViewCountDown.setText(timeFormatted); //set the text to display

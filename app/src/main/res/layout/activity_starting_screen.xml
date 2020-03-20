@@ -14,7 +14,7 @@
         android:layout_height="wrap_content"
         android:layout_centerHorizontal="true"
         android:layout_marginTop="30dp"
-        android:text="@string/how_to_sell_drugs"
+        android:text="How To Sell"
         android:textColor="@android:color/black"
         android:textSize="35sp" />
 
