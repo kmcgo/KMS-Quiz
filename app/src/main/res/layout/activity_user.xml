@@ -9,7 +9,7 @@
     tools:context="com.example.kmsquiz.UserActivity">
     <TextView
         android:id="@+id/text_overview"
-        android:text="LOREM IPSUM MOO MA MEE MAALOREM IPSUM MOO MA MEE MAA\nLOREM IPSUM MOO MA MEE MAA\"
+        android:text="USER PAGE PLACEHOLDER"
         android:textAlignment="center"
         android:textColor="@android:color/black"
         android:textSize="20sp"
@@ -22,7 +22,7 @@
         android:layout_marginTop="16dp"
         android:layout_below="@id/text_overview"
         android:freezesText="true"
-        android:text="Create Quiz" />
+        android:text="View Progress" />
 
     <Button
         android:id="@+id/button_"
@@ -31,7 +31,19 @@
         android:layout_marginTop="16dp"
         android:layout_below="@id/button_create_quiz"
         android:freezesText="true"
-        android:text="View Results" />
+        android:text="Edit User Information" />
+    <com.google.android.material.bottomnavigation.BottomNavigationView
+        android:id="@+id/nav_view"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="0dp"
+        android:layout_marginEnd="0dp"
+        android:background="?android:attr/windowBackground"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        android:layout_alignParentBottom="true"
+        app:menu="@menu/bottom_nav_menu" />
 
 
 </RelativeLayout>

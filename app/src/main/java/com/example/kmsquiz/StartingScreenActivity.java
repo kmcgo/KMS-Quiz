@@ -3,6 +3,7 @@ package com.example.kmsquiz;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
+import android.view.MenuItem;
 import android.view.View;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
@@ -10,7 +11,15 @@ import android.widget.ProgressBar;
 import android.widget.Spinner;
 import android.widget.TextView;
 import java.util.ArrayList;
+
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.navigation.NavController;
+import androidx.navigation.Navigation;
+import androidx.navigation.ui.AppBarConfiguration;
+import androidx.navigation.ui.NavigationUI;
+
+import com.google.android.material.bottomnavigation.BottomNavigationView;
 
 
 public class StartingScreenActivity extends AppCompatActivity {
@@ -32,6 +41,30 @@ public class StartingScreenActivity extends AppCompatActivity {
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_starting_screen);//Sets starting layout based on associated xml file
+
+        //Bottom menu bar for settings, user progress, etc
+        BottomNavigationView navView = (BottomNavigationView) findViewById(R.id.nav_view);
+        navView.setOnNavigationItemSelectedListener(new BottomNavigationView.OnNavigationItemSelectedListener() {
+            @Override
+            public boolean onNavigationItemSelected(@NonNull MenuItem item) {
+                switch (item.getItemId()) {
+                    case R.id.navigation_home:
+                        Intent intent = new Intent(StartingScreenActivity.this, StartingScreenActivity.class);
+                        startActivity(intent);
+                        break;
+                    case R.id.navigation_dashboard:
+                        Intent intent2 = new Intent(StartingScreenActivity.this, UserActivity.class);
+                        startActivity(intent2);
+                        break;
+                    case R.id.navigation_notifications:
+                        Intent intent3 = new Intent(StartingScreenActivity.this, AdminActivity.class);
+                        startActivity(intent3);
+                        break;
+                }
+                return false;
+            }
+        });
+
 
         textViewHighscore = findViewById(R.id.text_view_highscore); // intit hs, and category
         spinnerCategory = findViewById(R.id.spinner_category);

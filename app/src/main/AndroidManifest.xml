@@ -10,7 +10,10 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
         <activity android:name=".QuizActivity" />
+        <activity android:name=".UserActivity" />
+        <activity android:name=".AdminActivity" />
         <activity android:name=".StartingScreenActivity">
+
 
             <!-- <intent-filter> -->
             <!-- <action android:name="android.intent.action.MAIN" /> -->
@@ -21,7 +24,7 @@
         </activity>
         <activity
             android:name=".ui.login.LoginActivity"
-            android:label="@string/title_activity_login">
+            android:label="KMS Quiz">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 

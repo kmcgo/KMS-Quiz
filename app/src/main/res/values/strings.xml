@@ -11,4 +11,6 @@
     <string name="login_failed">"Login failed"</string>
     <string name="how_to_sell_drugs">How To Sell Drugs</string>
     <string name="overall_progress">Overall Progress</string>
+    <string name="title_activity_starting_screen">activity_starting_screen</string>
+    <string name="title_activity_new_starting_screen">newStartingScreen</string>
 </resources>
