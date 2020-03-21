@@ -242,6 +242,7 @@ public class QuizActivity extends AppCompatActivity {
         }
 
         showSolution(); //display score
+        //Makes the invisible answer reappear
         switch (ranSelect) {
             case 1:
                 rb1.setAlpha(1);
