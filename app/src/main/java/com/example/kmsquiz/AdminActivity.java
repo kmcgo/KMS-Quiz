@@ -33,14 +33,15 @@ public class AdminActivity extends Activity {
                     case R.id.navigation_home:
                         Intent intent = new Intent(AdminActivity.this, StartingScreenActivity.class);
                         startActivity(intent);
+                        item.setChecked(false);
                         break;
-                    case R.id.navigation_dashboard:
+                    case R.id.navigation_user:
                         Intent intent2 = new Intent(AdminActivity.this, UserActivity.class);
                         startActivity(intent2);
+                        item.setChecked(false);
                         break;
-                    case R.id.navigation_notifications:
-                        Intent intent3 = new Intent(AdminActivity.this, AdminActivity.class);
-                        startActivity(intent3);
+                    case R.id.navigation_admin:
+                        item.setChecked(true);
                         break;
                 }
                 return false;

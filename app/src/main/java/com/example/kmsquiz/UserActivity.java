@@ -25,14 +25,16 @@ public class UserActivity extends Activity {
                     case R.id.navigation_home:
                         Intent intent = new Intent(UserActivity.this, StartingScreenActivity.class);
                         startActivity(intent);
+                        item.setChecked(false);
                         break;
-                    case R.id.navigation_dashboard:
-                        Intent intent2 = new Intent(UserActivity.this, UserActivity.class);
-                        startActivity(intent2);
+                    case R.id.navigation_user:
+                        item.setChecked(true);
                         break;
-                    case R.id.navigation_notifications:
+                    case R.id.navigation_admin:
                         Intent intent3 = new Intent(UserActivity.this, AdminActivity.class);
                         startActivity(intent3);
+                        item.setChecked(false);
+
                         break;
                 }
                 return false;

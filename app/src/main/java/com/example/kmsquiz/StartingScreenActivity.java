@@ -3,6 +3,7 @@ package com.example.kmsquiz;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
+import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.ArrayAdapter;
@@ -44,21 +45,27 @@ public class StartingScreenActivity extends AppCompatActivity {
 
         //Bottom menu bar for settings, user progress, etc
         BottomNavigationView navView = (BottomNavigationView) findViewById(R.id.nav_view);
+        Menu menu = navView.getMenu();
+        MenuItem menuItem = menu.getItem(1);
+        menuItem.setChecked(true);
         navView.setOnNavigationItemSelectedListener(new BottomNavigationView.OnNavigationItemSelectedListener() {
             @Override
             public boolean onNavigationItemSelected(@NonNull MenuItem item) {
                 switch (item.getItemId()) {
                     case R.id.navigation_home:
-                        Intent intent = new Intent(StartingScreenActivity.this, StartingScreenActivity.class);
-                        startActivity(intent);
+                        item.setChecked(true);
                         break;
-                    case R.id.navigation_dashboard:
+                    case R.id.navigation_user:
                         Intent intent2 = new Intent(StartingScreenActivity.this, UserActivity.class);
                         startActivity(intent2);
+                        item.setChecked(false);
+
+
                         break;
-                    case R.id.navigation_notifications:
+                    case R.id.navigation_admin:
                         Intent intent3 = new Intent(StartingScreenActivity.this, AdminActivity.class);
                         startActivity(intent3);
+                        item.setChecked(false);
                         break;
                 }
                 return false;
