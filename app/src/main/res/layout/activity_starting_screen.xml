@@ -14,7 +14,7 @@
         android:layout_height="wrap_content"
         android:layout_centerHorizontal="true"
         android:layout_marginTop="30dp"
-        android:text="@string/how_to_sell_drugs"
+        android:text="How To Sell"
         android:textColor="@android:color/black"
         android:textSize="35sp" />
 
@@ -66,7 +66,21 @@
         android:layout_height="wrap_content"
         android:layout_below="@+id/button_start_quiz"
         android:layout_centerInParent="true"
-        android:layout_marginTop="32dp" />
+        android:layout_marginTop="32dp"
+        />
 
+
+    <com.google.android.material.bottomnavigation.BottomNavigationView
+        android:id="@+id/nav_view"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="0dp"
+        android:layout_marginEnd="0dp"
+        android:background="?android:attr/windowBackground"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        android:layout_alignParentBottom="true"
+        app:menu="@menu/bottom_nav_menu" />
 
 </RelativeLayout>

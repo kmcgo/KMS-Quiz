@@ -32,6 +32,7 @@ public class Category {
     public void setName(String name){
         this.name = name;
     }
+    // returns name as a string
     @Override
     public String toString(){
         return getName();
