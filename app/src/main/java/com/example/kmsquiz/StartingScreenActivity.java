@@ -46,26 +46,22 @@ public class StartingScreenActivity extends AppCompatActivity {
         //Bottom menu bar for settings, user progress, etc
         BottomNavigationView navView = (BottomNavigationView) findViewById(R.id.nav_view);
         Menu menu = navView.getMenu();
-        MenuItem menuItem = menu.getItem(1);
+        MenuItem menuItem = menu.getItem(0);
+
         menuItem.setChecked(true);
         navView.setOnNavigationItemSelectedListener(new BottomNavigationView.OnNavigationItemSelectedListener() {
             @Override
             public boolean onNavigationItemSelected(@NonNull MenuItem item) {
                 switch (item.getItemId()) {
                     case R.id.navigation_home:
-                        item.setChecked(true);
                         break;
                     case R.id.navigation_user:
                         Intent intent2 = new Intent(StartingScreenActivity.this, UserActivity.class);
                         startActivity(intent2);
-                        item.setChecked(false);
-
-
                         break;
                     case R.id.navigation_admin:
                         Intent intent3 = new Intent(StartingScreenActivity.this, AdminActivity.class);
                         startActivity(intent3);
-                        item.setChecked(false);
                         break;
                 }
                 return false;

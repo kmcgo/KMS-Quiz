@@ -3,6 +3,7 @@ package com.example.kmsquiz;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
+import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.ArrayAdapter;
@@ -26,6 +27,10 @@ public class AdminActivity extends Activity {
 
         //Bottom menu bar for settings, user progress, etc
         BottomNavigationView navView = (BottomNavigationView) findViewById(R.id.nav_view);
+        Menu menu = navView.getMenu();
+        MenuItem menuItem = menu.getItem(2);
+
+        menuItem.setChecked(true);
         navView.setOnNavigationItemSelectedListener(new BottomNavigationView.OnNavigationItemSelectedListener() {
             @Override
             public boolean onNavigationItemSelected(@NonNull MenuItem item) {
@@ -33,15 +38,12 @@ public class AdminActivity extends Activity {
                     case R.id.navigation_home:
                         Intent intent = new Intent(AdminActivity.this, StartingScreenActivity.class);
                         startActivity(intent);
-                        item.setChecked(false);
                         break;
                     case R.id.navigation_user:
                         Intent intent2 = new Intent(AdminActivity.this, UserActivity.class);
                         startActivity(intent2);
-                        item.setChecked(false);
                         break;
                     case R.id.navigation_admin:
-                        item.setChecked(true);
                         break;
                 }
                 return false;
