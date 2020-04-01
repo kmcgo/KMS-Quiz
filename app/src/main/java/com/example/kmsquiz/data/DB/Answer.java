@@ -2,8 +2,18 @@ package com.example.kmsquiz.data.DB;
 
 public class Answer {
     private String Txt;
-    private int quesNum;
+
+    public int getQuizNum() {
+        return quizNum;
+    }
+
+    public void setQuizNum(int quizNum) {
+        this.quizNum = quizNum;
+    }
+
+    private int quizNum;
     private int AnsId;
+    private int quesNum;
 
 
     public int getAnsId() {

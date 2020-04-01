@@ -3,7 +3,7 @@ package com.example.kmsquiz.data.DB;
 public class IsAdmin {
 
     private int UserId;
-    private boolean Admin;
+    private int Admin;
 
     public Integer getUserId() {
         return UserId;
@@ -13,11 +13,11 @@ public class IsAdmin {
         UserId = userId;
     }
 
-    public boolean isAdmin() {
+    public int isAdmin() {
         return Admin;
     }
 
-    public void setAdmin(boolean admin) {
+    public void setAdmin(int admin) {
         Admin = admin;
     }
 }

@@ -1,6 +1,6 @@
 package com.example.kmsquiz.data.DB;
 
-public class QzHas {
+public class QtHas {
 
     private int QuesID;
     private int QuizId;

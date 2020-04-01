@@ -35,14 +35,15 @@ public class QuizContract {
         public static final String TableName  = "QUIZ";
         public static final String ColumnQuizID = "QuizId";
         public static final String ColumnTitle = "Title";
+        public static final String ColumnTotQues = "TotalQuestions";
+        public static final String ColumnTotPts = "TotalPoints";
     }
 
     public static class QzHasTable implements BaseColumns {
         public static final String TableName = "Qthas";
         public static final String ColumnQuizId = "QuizId";
         public static final String ColumnQuestId = "QuestId";
-        public static final String ColumnTotQuest = "TotQuest";
-        public static final String ColumnTotPts = "TotPts";
+
     }
 
     public static class QtHasTable implements BaseColumns {
@@ -56,6 +57,7 @@ public class QuizContract {
     public static class AnswerTable implements BaseColumns {
         public static final String TableName = "Answer";
         public static final String ColumnQuizId = "QuizId";
+        public static final String ColumnQuestId = "QuestId";
         public static final String ColumnAnswId = "AnswId";
         public static final String ColumnText = "Txt";
     }
@@ -72,7 +74,6 @@ public class QuizContract {
 
     public static class UserIdTable implements BaseColumns {
         public static final String TableName = "UserInfo";
-        public static final String ColumnPassword = "Pass";
         public static final String ColumnUserId = "UserId";
         public static final String ColumnUserName = "Name";
     }

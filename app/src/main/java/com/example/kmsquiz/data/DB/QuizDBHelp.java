@@ -21,7 +21,7 @@ public class QuizDBHelp extends SQLiteOpenHelper {
     private SQLiteDatabase db;
 
 
-    QuizDBHelp(Context context) {
+    public QuizDBHelp(Context context) {
         super(context, DATABASE_NAME, null, DATABASE_VERSION);
     }
 
