@@ -10,6 +10,7 @@
 
 
     <TextView
+        android:id="@+id/header"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_centerHorizontal="true"
@@ -69,6 +70,38 @@
         android:layout_marginTop="32dp"
         />
 
+
+    <ImageView
+        android:id="@+id/imageView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/header"
+        android:layout_centerVertical="true"
+        android:layout_marginTop="-88dp"
+        android:alpha=".1"
+        android:src="@drawable/logo" />
+
+
+    <TextView
+    android:id="@+id/KMS_large"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:layout_below="@id/spinner_category"
+    android:layout_centerHorizontal="true"
+    android:text="KMS"
+    android:textSize="100dp"
+    android:alpha=".2"/>
+
+    <TextView
+        android:id="@+id/quiz"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/KMS_large"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="-15dp"
+        android:alpha=".2"
+        android:text="study quiz"
+        android:textSize="35dp" />
 
     <com.google.android.material.bottomnavigation.BottomNavigationView
         android:id="@+id/nav_view"

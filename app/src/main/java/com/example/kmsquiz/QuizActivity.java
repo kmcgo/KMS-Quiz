@@ -8,6 +8,7 @@ import android.os.CountDownTimer;
 import android.view.View;
 import android.view.animation.Animation;
 import android.view.animation.AnimationUtils;
+import android.view.animation.TranslateAnimation;
 import android.widget.Button;
 import android.widget.RadioButton;
 import android.widget.RadioGroup;
@@ -182,6 +183,7 @@ public class QuizActivity extends AppCompatActivity {
         int seconds = (int) (timeLeftInMillis / 1000) % 60; //seconds hand
         Random rand = new Random();
         Animation animFadeOut = AnimationUtils.loadAnimation(getApplicationContext(),R.anim.fade_out);
+
 
         if(seconds == 23){
             switch (ranSelect) {
