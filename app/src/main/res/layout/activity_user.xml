@@ -7,20 +7,12 @@
     android:background="@color/colorBackground"
     android:padding="16dp"
     tools:context="com.example.kmsquiz.UserActivity">
-    <TextView
-        android:id="@+id/text_overview"
-        android:text="USER PAGE PLACEHOLDER"
-        android:textAlignment="center"
-        android:textColor="@android:color/black"
-        android:textSize="20sp"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content" />
+
     <Button
         android:id="@+id/button_create_quiz"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginTop="16dp"
-        android:layout_below="@id/text_overview"
         android:freezesText="true"
         android:text="View Progress" />
 

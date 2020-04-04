@@ -8,6 +8,8 @@ import android.view.MenuItem;
 import android.view.View;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
+import android.widget.ListView;
+import android.widget.SimpleCursorAdapter;
 import android.widget.Spinner;
 import android.widget.TextView;
 import java.util.ArrayList;
@@ -25,11 +27,29 @@ public class AdminActivity extends Activity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_admin);
 
+        Button btnManageQuizzes = findViewById(R.id.button_manage_quizzes);
+        Button btnManageUsers = findViewById(R.id.button_manage_users);
+
+        btnManageQuizzes.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                manageQuizzes();
+            }
+        });
+        btnManageUsers.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                manageUsers();
+            }
+        });
+
+
+
+
         //Bottom menu bar for settings, user progress, etc
         BottomNavigationView navView = (BottomNavigationView) findViewById(R.id.nav_view);
         Menu menu = navView.getMenu();
         MenuItem menuItem = menu.getItem(2);
-
         menuItem.setChecked(true);
         navView.setOnNavigationItemSelectedListener(new BottomNavigationView.OnNavigationItemSelectedListener() {
             @Override
@@ -49,5 +69,14 @@ public class AdminActivity extends Activity {
                 return false;
             }
         });
+
+    }
+    private void manageQuizzes() {
+        Intent intent = new Intent(AdminActivity.this, ManageQuizActivity.class);
+        startActivity(intent);
+    }
+    private void manageUsers() {
+        Intent intent = new Intent(AdminActivity.this, ManageUserActivity.class);
+        startActivity(intent);
     }
 }

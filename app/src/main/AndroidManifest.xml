@@ -9,19 +9,27 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".QuizActivity" />
-        <activity android:name=".UserActivity" />
-        <activity android:name=".AdminActivity" />
-        <activity android:name=".StartingScreenActivity">
+        <activity
+            android:name=".ManageUserActivity"
+            android:label="@string/title_activity_manage_user"
+            android:theme="@style/AppTheme.NoActionBar"></activity>
+        <activity
+            android:name=".ManageQuizActivity"
+            android:label="@string/title_activity_manage_quiz"
+            android:theme="@style/AppTheme.NoActionBar" />
+        <activity
+            android:name=".QuizActivity"
+            android:label="@string/title_activity_quiz"/>
+        <activity
+            android:name=".UserActivity"
+            android:label="@string/title_activity_user"/>
+        <activity
+            android:name=".AdminActivity"
+            android:label="@string/title_activity_admin"/>
+        <activity
+            android:name=".StartingScreenActivity"
+            android:label="@string/title_activity_starting_screen"/>
 
-
-            <!-- <intent-filter> -->
-            <!-- <action android:name="android.intent.action.MAIN" /> -->
-
-
-            <!-- <category android:name="android.intent.category.LAUNCHER" /> -->
-            <!-- </intent-filter> -->
-        </activity>
         <activity
             android:name=".ui.login.LoginActivity"
             android:label="KMS Quiz">
