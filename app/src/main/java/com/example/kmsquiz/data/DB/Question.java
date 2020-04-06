@@ -1,6 +1,5 @@
-package com.example.kmsquiz;
+package com.example.kmsquiz.data.DB;
 
-import android.os.Bundle;
 import android.os.Parcel;
 import android.os.Parcelable;
 

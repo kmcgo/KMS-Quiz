@@ -1,10 +1,12 @@
-package com.example.kmsquiz;
+package com.example.kmsquiz.data.DB;
 
 import android.content.ContentValues;
 import android.content.Context;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
+
+import com.example.kmsquiz.data.Category;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -20,7 +22,7 @@ public class QuizDBHelp extends SQLiteOpenHelper {
     private SQLiteDatabase db;
 
 
-    QuizDBHelp(Context context) {
+    public QuizDBHelp(Context context) {
         super(context, DATABASE_NAME, null, DATABASE_VERSION);
     }
 
@@ -42,6 +44,7 @@ public class QuizDBHelp extends SQLiteOpenHelper {
                 QuizContract.CategoriesTable.TABLE_NAME + "( " +
                 QuizContract.CategoriesTable._ID + " INTEGER PRIMARY KEY AUTOINCREMENT, " +
                 QuizContract.CategoriesTable.COLUMN_NAME + " TEXT " +
+
                 ")";
 
         final String SQL_CREATE_QUESTIONS_TABLE = "CREATE TABLE " +
@@ -123,7 +126,7 @@ public class QuizDBHelp extends SQLiteOpenHelper {
         insertQuestion(q3);
         Question q4 = new Question("What were the major efficacy outcome measures in Checkmate 214?",
                 "Confirmed ORR, PFS, OS", "Unconfirmed ORR, FFS, and OS", "FFS and S" +
-                "OL", Category.DOCS,
+                "OL", Category.DRUG,
                 1);
         insertQuestion(q4);
         Question q5 = new Question("Non existing, Easy: A is correct",

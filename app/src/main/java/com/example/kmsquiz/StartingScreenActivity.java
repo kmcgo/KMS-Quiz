@@ -22,6 +22,9 @@ import androidx.navigation.ui.NavigationUI;
 
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 
+import com.example.kmsquiz.data.DB.Category;
+import com.example.kmsquiz.data.DB.QuizDBHelp;
+
 
 public class StartingScreenActivity extends AppCompatActivity {
 

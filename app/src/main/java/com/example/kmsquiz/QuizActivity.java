@@ -22,6 +22,13 @@ import java.util.Random;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import com.example.kmsquiz.data.DB.Answer;
+import com.example.kmsquiz.data.DB.DateBaseHelp;
+import com.example.kmsquiz.data.DB.QtHas;
+import com.example.kmsquiz.data.DB.Question;
+import com.example.kmsquiz.data.DB.QuestionDB;
+import com.example.kmsquiz.data.DB.QuizDBHelp;
+
 public class QuizActivity extends AppCompatActivity {
 
 
@@ -51,10 +58,14 @@ public class QuizActivity extends AppCompatActivity {
     private CountDownTimer countDownTimer;
     private long timeLeftInMillis;
 
-    private ArrayList<Question> questionList;
+    private ArrayList<Question> questionList;   // comment out this for test db, use for known db
+    //private ArrayList<QuestionDB> questionList;  // comment out next three for known db, use for test db
+    //private ArrayList<Answer> answerList;
+    //private ArrayList<QtHas> qtHasList;
     private int questionCounter;
     private int questionCountTotal;
-    private Question currentQuestion;
+    private Question currentQuestion;    // comment out this for test db, use for known db
+    //private QuestionDB currentQuestion;   // comment out this for known db, use for test db
 
     private int score;
     private boolean answered;
@@ -93,9 +104,13 @@ public class QuizActivity extends AppCompatActivity {
         textViewCategory.setText("Category: " + categoryName);
         //if first instance init quiz
         if (savedInstanceState == null) {
-            QuizDBHelp dbHelper = new QuizDBHelp(this);
+            QuizDBHelp dbHelper = new QuizDBHelp(this); // comment out this for test db, use for known db
+            //DateBaseHelp dbHelper = new DateBaseHelp(this);   // comment out this for know db, use for test db
 
-            questionList = dbHelper.getQuestions(categoryID);
+            questionList = dbHelper.getQuestions(categoryID);  // comment out this for test db, use for known db
+            //questionList = dbHelper.getAllQuestions();    // comment out next three for known db, use for test db
+            //answerList = dbHelper.getAnswers(1);
+            //qtHasList = dbHelper.getQtA();
             questionCountTotal = questionList.size();
             Collections.shuffle(questionList);
 
@@ -142,10 +157,25 @@ public class QuizActivity extends AppCompatActivity {
         if (questionCounter < questionCountTotal) { // if not the end of the quiz
             currentQuestion = questionList.get(questionCounter); //update current question
 
-            textViewQuestion.setText(currentQuestion.getQuestion());  //get question
+            textViewQuestion.setText(currentQuestion.getQuestion());  //get question    comment out this block for test db use for safe db
             rb1.setText(currentQuestion.getOption1()); //get choices
             rb2.setText(currentQuestion.getOption2());
             rb3.setText(currentQuestion.getOption3());
+            /*
+            ArrayList<String> answers = new ArrayList<>();     //comment out this block for known db use for test db
+            for (int i = 0; i < answerList.size(); i++)
+            {
+                Answer a = answerList.get(i);
+                if (a.getQuesNum() == questionCounter)
+                {
+                    answers.add(a.getTxt());
+                }
+            }
+            textViewQuestion.setText(currentQuestion.getTxt());
+            rb1.setText(answers.get(0));
+            rb2.setText(answers.get(1));
+            rb2.setText(answers.get(2));
+             */
 
             questionCounter++; // update counter
             textViewQuestionCount.setText("Question: " + questionCounter + "/" + questionCountTotal); //update totals + score
@@ -202,8 +232,9 @@ public class QuizActivity extends AppCompatActivity {
 
         if(seconds == 25) { // select incorrect answer
             ranSelect = rand.nextInt(3) + 1;;
-            if(ranSelect == currentQuestion.getAnswerNr()){
-                while(ranSelect == currentQuestion.getAnswerNr() ) {
+
+            if(ranSelect == currentQuestion.getAnswerNr()){    // // if correct  //replace with currentQuestion.answerNr for safe, getAnswerNr for test
+                while(ranSelect == currentQuestion.getAnswerNr() ) { // replaced by currentQuestion.getAnswerNr
                     ranSelect = rand.nextInt(3) + 1;
                 }
             }
@@ -230,6 +261,20 @@ public class QuizActivity extends AppCompatActivity {
         }
     }
 
+/*   private int getAnswerNr()   // to be used with test database, not safe db
+    {
+        int answercorrect = 0;
+        for (int i = 0; i < qtHasList.size(); i++)
+        {
+            QtHas qt = qtHasList.get(i);
+            if (qt.getQuesID() == currentQuestion.getNum())
+            {
+                answercorrect = qt.getCorrect();
+            }
+        }
+        return answercorrect;
+    }
+*/
     private void checkAnswer() {
         answered = true; // mark as answered
 
@@ -238,7 +283,7 @@ public class QuizActivity extends AppCompatActivity {
         RadioButton rbSelected = findViewById(rbGroup.getCheckedRadioButtonId()); // find the selected button
         int answerNr = rbGroup.indexOfChild(rbSelected) + 1; //get index of selected button
 
-        if (answerNr == currentQuestion.getAnswerNr()) { // if correct
+        if (answerNr == currentQuestion.getAnswerNr()) { // if correct  //replace with currentQuestion.answerNr for safe, getAnswerNr for test
             score++; // increment score
             textViewScore.setText("Score: " + score); // update score text
         }
@@ -264,7 +309,7 @@ public class QuizActivity extends AppCompatActivity {
         rb2.setTextColor(Color.RED);
         rb3.setTextColor(Color.RED);
 
-        switch (currentQuestion.getAnswerNr()) { // correct one is changed to green
+        switch (currentQuestion.getAnswerNr()) { // correct one is changed to green  //replace with currentQuestion.getAnswerNr for safe, getAnserNr for test db
             case 1:
                 rb1.setTextColor(Color.GREEN);
                 textViewQuestion.setText("Answer 1 is correct");
