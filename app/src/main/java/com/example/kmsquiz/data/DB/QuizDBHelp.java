@@ -9,6 +9,7 @@ import android.database.sqlite.SQLiteOpenHelper;
 import com.example.kmsquiz.data.Category;
 
 import java.util.ArrayList;
+import java.util.List;
 
 
 public class QuizDBHelp extends SQLiteOpenHelper {
@@ -82,14 +83,25 @@ public class QuizDBHelp extends SQLiteOpenHelper {
 
     private void fillCategoriesTable() {
         Category c1 = new Category("Drug Info");
-        addCategory(c1);
+        insertCategory(c1);
         Category c2 = new Category("Sales");
-        addCategory(c2);
+        insertCategory(c2);
         Category c3 = new Category("Doctors");
-        addCategory(c3);
+        insertCategory(c3);
     }
 
-    private void addCategory(Category category) {
+    public void addCategory(Category category) {
+        db = getWritableDatabase();
+        insertCategory(category);
+    }
+
+    public void addCategories(List<Category> categories) {
+        for (Category c : categories) {
+            insertCategory(c);
+        }
+    }
+
+    private void insertCategory(Category category) {
         ContentValues cv = new ContentValues();
         cv.put(QuizContract.CategoriesTable.COLUMN_NAME, category.getName());
         db.insert(QuizContract.CategoriesTable.TABLE_NAME, null, cv);
@@ -102,32 +114,43 @@ public class QuizDBHelp extends SQLiteOpenHelper {
                 "5mg/kg admin as an IV infusion over 10 minutes, followed by IPI 1mg/kg admin as an IV infusion 5 weeks for 3 doses",
                 "3mg/kg admin as an IV infusion over 60 minutes, followed by IPI 1mg/kg admin as an IV infusion 8 weeks for 8 doses",
                 1, 1);
-        addQuestion(q1);
+        insertQuestion(q1);
 
         Question q2 = new Question("What was the hazard ratio for PFS in favor of " +
                 "Opdivo plus IPI compared with sunitinib in the Checkmate 214 immediately?",
                 "0.98", "0.28", "0.82", 3, Category.DRUG);
-        addQuestion(q2);
+        insertQuestion(q2);
         Question q3 = new Question("Patients were excluded from Checkmate 025 if they had which of the following?",
                 "No previous health issues", "Prior Treatment with an mTOR inhibitor", "T-Rex arms", 2,
                 Category.SALES);
-        addQuestion(q3);
+        insertQuestion(q3);
         Question q4 = new Question("What were the major efficacy outcome measures in Checkmate 214?",
                 "Confirmed ORR, PFS, OS", "Unconfirmed ORR, FFS, and OS", "FFS and S" +
                 "OL", Category.DRUG,
                 1);
-        addQuestion(q4);
+        insertQuestion(q4);
         Question q5 = new Question("Non existing, Easy: A is correct",
                 "A", "B", "C", 1,
                 4);
-        addQuestion(q5);
+        insertQuestion(q5);
         Question q6 = new Question("Non existing, Medium: B is correct",
                 "A", "B", "C", 2,
                 5);
-        addQuestion(q6);
+        insertQuestion(q6);
     }
 
-    private void addQuestion(Question question) {
+    public void addQuestion(Question question) {
+        db = getWritableDatabase();
+        insertQuestion(question);
+    }
+    public void addQuestions(List<Question> questions) {
+        db = getWritableDatabase();
+        for(Question q : questions) {
+            insertQuestion(q);
+        }
+    }
+
+    private void insertQuestion(Question question) {
         ContentValues cv = new ContentValues();
         cv.put(QuizContract.QuestionsTable.COLUMN_QUESTION, question.getQuestion());
         cv.put(QuizContract.QuestionsTable.COLUMN_OPTION1, question.getOption1());

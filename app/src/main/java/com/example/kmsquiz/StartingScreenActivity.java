@@ -89,6 +89,7 @@ public class StartingScreenActivity extends AppCompatActivity {
             }
         });
 
+
     }
     private void startQuiz() {
         //Create intent object which is like an operation that will be performed, in this case the operation is used to change views
