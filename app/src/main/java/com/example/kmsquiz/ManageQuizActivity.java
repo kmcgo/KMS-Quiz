@@ -2,6 +2,8 @@ package com.example.kmsquiz;
 
 import android.os.Bundle;
 
+import com.example.kmsquiz.data.Category;
+import com.example.kmsquiz.data.DB.QuizDBHelp;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 import com.google.android.material.snackbar.Snackbar;
 

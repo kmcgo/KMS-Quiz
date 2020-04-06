@@ -22,7 +22,7 @@ import androidx.navigation.ui.NavigationUI;
 
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 
-import com.example.kmsquiz.data.DB.Category;
+import com.example.kmsquiz.data.Category;
 import com.example.kmsquiz.data.DB.QuizDBHelp;
 
 
