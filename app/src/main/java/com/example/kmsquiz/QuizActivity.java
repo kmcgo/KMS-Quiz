@@ -8,6 +8,7 @@ import android.os.CountDownTimer;
 import android.view.View;
 import android.view.animation.Animation;
 import android.view.animation.AnimationUtils;
+import android.view.animation.TranslateAnimation;
 import android.widget.Button;
 import android.widget.RadioButton;
 import android.widget.RadioGroup;
@@ -183,28 +184,30 @@ public class QuizActivity extends AppCompatActivity {
         Random rand = new Random();
         Animation animFadeOut = AnimationUtils.loadAnimation(getApplicationContext(),R.anim.fade_out);
 
-        if(seconds == 23){
+
+
+        if(seconds == 23){ //make the selected option disappear
             switch (ranSelect) {
                 case 1:
-                    rb1.setAlpha(0);
+                    rb1.setVisibility(View.GONE);
                     break;
                 case 2:
-                    rb2.setAlpha(0);
+                    rb2.setVisibility(View.GONE);
                     break;
                 case 3:
-                    rb3.setAlpha(0);
+                    rb3.setVisibility(View.GONE);
                     break;
             }
         }
 
-        if(seconds == 25) {
+        if(seconds == 25) { // select incorrect answer
             ranSelect = rand.nextInt(3) + 1;;
             if(ranSelect == currentQuestion.getAnswerNr()){
                 while(ranSelect == currentQuestion.getAnswerNr() ) {
                     ranSelect = rand.nextInt(3) + 1;
                 }
             }
-                switch (ranSelect) {
+                switch (ranSelect) { //start fading out selected option
                     case 1:
                         rb1.startAnimation(animFadeOut);
                         break;
@@ -213,7 +216,6 @@ public class QuizActivity extends AppCompatActivity {
                         break;
                     case 3:
                         rb3.startAnimation(animFadeOut);
-
                         break;
             }
         }
@@ -245,13 +247,13 @@ public class QuizActivity extends AppCompatActivity {
         //Makes the invisible answer reappear
         switch (ranSelect) {
             case 1:
-                rb1.setAlpha(1);
+                rb1.setVisibility(View.VISIBLE);
                 break;
             case 2:
-                rb2.setAlpha(1);
+                rb2.setVisibility(View.VISIBLE);;
                 break;
             case 3:
-                rb3.setAlpha(1);
+                rb3.setVisibility(View.VISIBLE);;
                 break;
         }
     }
