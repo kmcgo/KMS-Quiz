@@ -100,7 +100,6 @@ public class StartingScreenActivity extends AppCompatActivity {
         String categoryName = selectedCategory.getName();
 
         intent.putExtra(EXTRA_CATEGORY_ID, categoryID); // save to the intent
-        intent.putExtra(EXTRA_CATEGORY_NAME, categoryName);
 
         startActivityForResult(intent, REQUEST_CODE_QUIZ);
 

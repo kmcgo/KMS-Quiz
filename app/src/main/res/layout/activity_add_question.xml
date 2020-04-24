@@ -1,0 +1,77 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:padding="16dp"
+    tools:context=".AddQuestionActivity">
+
+    <LinearLayout
+        android:id="@+id/questions"
+        android:orientation="vertical"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentTop="true"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true">
+
+        <EditText
+            android:id="@+id/question"
+            android:layout_weight="1"
+            android:layout_width="wrap_content"
+            android:layout_height="0dp"
+            android:hint="Question"
+            android:selectAllOnFocus="true"/>
+        <EditText
+            android:id="@+id/answer1"
+            android:layout_width="wrap_content"
+            android:layout_weight="1"
+            android:layout_height="0dp"
+            android:hint="Answer 1 (Put correct answer here)"
+            android:selectAllOnFocus="true"
+            app:layout_constraintTop_toBottomOf="@+id/question"/>
+        <EditText
+            android:id="@+id/answer2"
+            android:layout_width="wrap_content"
+            android:layout_weight="1"
+            android:layout_height="0dp"
+            android:hint="Answer 2"
+            android:selectAllOnFocus="true"
+            app:layout_constraintTop_toBottomOf="@+id/answer1" />
+        <EditText
+            android:id="@+id/answer3"
+            android:layout_width="wrap_content"
+            android:layout_weight="1"
+            android:layout_height="0dp"
+            android:hint="Answer 3"
+            android:selectAllOnFocus="true"
+            app:layout_constraintTop_toBottomOf="@+id/answer2" />
+    </LinearLayout>
+    <LinearLayout
+        android:orientation="horizontal"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/rel_buttons"
+        android:layout_below="@+id/questions">
+        <Button
+            android:id="@+id/btn_addMoreQuestions"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:freezesText="true"
+            android:text="Add More Questions"
+            />
+
+        <Button
+            android:id="@+id/btn_finish"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="136dp"
+            android:layout_weight="1"
+            android:freezesText="true"
+            android:text="Finish Quiz"
+             />
+        </LinearLayout>
+
+</RelativeLayout>

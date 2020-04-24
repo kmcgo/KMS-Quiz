@@ -1,5 +1,6 @@
 package com.example.kmsquiz;
 
+import android.content.Intent;
 import android.os.Bundle;
 
 import com.example.kmsquiz.data.Category;
@@ -12,6 +13,7 @@ import androidx.appcompat.widget.Toolbar;
 
 import android.view.View;
 import android.widget.ArrayAdapter;
+import android.widget.EditText;
 import android.widget.ListView;
 
 import java.util.ArrayList;
@@ -33,13 +35,12 @@ public class ManageQuizActivity extends AppCompatActivity {
         ListView listView = findViewById(R.id.listview_adminQuestions);
         listView.setAdapter(adapterCategories);
 
-
         FloatingActionButton fab = findViewById(R.id.fab);
         fab.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Snackbar.make(view, "Replace with your own action", Snackbar.LENGTH_LONG)
-                        .setAction("Action", null).show();
+                Intent intent = new Intent(ManageQuizActivity.this, AddQuizActivity.class);
+                startActivity(intent);
             }
         });
     }
